@@ -1,0 +1,48 @@
+1. Post request create apartment, url http://localhost:7000/v1/apartment/1, body
+{
+    "apartmentNumber": "101",
+    "guestsNumber": 2,
+    "category": "STANDARD",
+    "price": 200
+}
+Response: 200 Ok, long - id.
+2. Get request find apartment by id, url http://localhost:7000/v1/apartment/id/1
+Response: 200 Ok, body
+{
+    "id": 1,
+    "apartmentNumber": 101,
+    "guestsNumber": 2,
+    "category": "STANDARD",
+    "status": "AVAILABLE",
+    "price": 200.0
+}
+
+3. Get request find all apartments, url http://localhost:7000/v1/apartment/1
+Response - List of created apartments
+
+4. Get request find apartments by status, url http://localhost:7000/v1/apartment/status/AVAILABLE/1
+Response - List of apartments, witch has AVAILABLE status.
+
+You can change status with the next request, and check this request with another statuses.
+
+5. Put request change apartment status, url http://localhost:7000/v1/apartment/status/1/1?status=BOOKED
+(add status BOOKED to params)
+Request: 200 Ok, and you'll get new updated apartment
+{
+    "id": 1,
+    "apartmentNumber": 101,
+    "guestsNumber": 2,
+    "category": "STANDARD",
+    "status": "BOOKED",
+    "price": 200.0
+}
+
+6. Put request change apartment info, url http://localhost:7000/v1/apartment/1/1
+Response: 200 Ok, body {
+                           "id": 1,
+                           "apartmentNumber": 101,
+                           "guestsNumber": 3,
+                           "category": "LUX",
+                           "status": "BOOKED",
+                           "price": 205.25
+                       }

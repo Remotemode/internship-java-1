@@ -40,7 +40,7 @@ public class Apartment {
     private ApartmentStatus status;
 
     @NotNull
-    @Column(name = "price", nullable = false, columnDefinition = "DECIMAL(10,8)")
+    @Column(name = "price", nullable = false, columnDefinition = "DECIMAL(5,2)")
     private double price;
 
     public Apartment(long apartmentNumber, long guestsNumber, ApartmentCategory category, ApartmentStatus status, double price) {

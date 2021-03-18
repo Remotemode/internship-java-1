@@ -31,7 +31,7 @@ public class Order {
     private long userId;
 
     @NotNull
-    @Column(name = "price", nullable = false, columnDefinition = "DECIMAL(10,8)")
+    @Column(name = "price", nullable = false, columnDefinition = "DECIMAL(5,2)")
     private double price;
 
     @NotNull

@@ -57,7 +57,7 @@ public class ApartmentController {
     }
 
     @GetMapping("/status/{userId}")
-    List<Apartment> findApartmentByStatus(@PathVariable long userId,
+    List<Apartment> findApartmentsByStatus(@PathVariable long userId,
                                           @RequestParam ApartmentStatus status) {
         permissionService.checkPermission(userId);
         return apartmentService.findApartmentsByStatus(status);

@@ -1,0 +1,54 @@
+1. Post request сreateOrder, url http://localhost:7000/v1/order,
+body {
+         "apartmentId": 1,
+         "userId": 1,
+         "price": 200.55
+     }
+Response 200 Ok. Returns long id of created order.
+
+2. Get request getOrderById, url http://localhost:7000/v1/order/id/1.
+Response: {
+              "id": 1,
+              "apartmentId": 1,
+              "userId": 1,
+              "price": 200.55,
+              "status": "CREATED",
+              "startDate": "2021-03-18T11:46:32.075+00:00"
+          }
+
+3. Get request getOrdersByUserId, url http://localhost:7000/v1/order//userid/1
+Response: [
+              {
+                  "id": 1,
+                  "apartmentId": 1,
+                  "userId": 1,
+                  "price": 200.55,
+                  "status": "CREATED",
+                  "startDate": "2021-03-18T11:46:32.075+00:00"
+              }
+          ]
+
+4. Get request getAllOrders, url http://localhost:7000/v1/order/1
+Response: you'll get all orders, if user has permission (check by userId)
+
+5. Get request getOrdersByStatus, url http://localhost:7000/v1/order//status/CREATED/1. (or another status)
+Response: list of orders.
+
+6. Put request confirmOrder, url http://localhost:7000/v1/order/status/confirmed/1/1
+Response: changed order with status Confirm
+If you check apartment-status at the moment, you'll get BOOKED.
+
+7.Put request markOrderPayed, url http://localhost:7000/v1/order/status/payed/1/1
+Response: changed order with status Payed
+If you check apartment-status at the moment, you'll get BUSY.
+
+8. Put request cancelOrder, url http://localhost:7000/v1/order/status/cancel/1/1
+Response: changed order with status Cancelled
+If you check apartment-status at the moment, you'll get AVAILABLE.
+
+9. Get request findExpiredOrders, url http://localhost:7000/v1/order/expired/1
+Response: you'll get list of orders, which were created more, than 2 days ago, and wasn't payed.
+
+10. Put request cancelExpiredOrders, url http://localhost:7000/v1/order/cancel/1
+Response: list of orders with expired payment, which were cancelled
+
